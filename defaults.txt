@@ -5,23 +5,34 @@ ExternalFileAccess=None;p
 UdfAccess=Restrict udf;p
 TempDirectories=;d
 RemoteFileOpenAbility=0;b
+AuditTraceConfigFile=;p
+MaxUserTraceLogSize=10
+FileSystemCacheThreshold=65536
+FileSystemCacheSize=30
+DatabaseGrowthIncrement=134217728
+
+[Security]
+Authentication=native;l;native,trusted,mixed
+
+[SQL]
+CompleteBooleanEvaluation=0;b
+RelaxedAliasChecking=0;b
 
 [Resource]
 CpuAffinityMask=1
 DeadlockTimeout=10
 DefaultDbCachePages=2048
 EventMemSize=65536
-LockMemSize=262144
-LockSemCount=32
+LockMemSize=1048576
 LockGrantOrder=1;b
 LockAcquireSpins=0
 LockHashSlots=101
-SortMemBlockSize=1048576
-SortMemUpperLimit=67108864
 BugcheckAbort=0
 GCPolicy=combined;l;background,cooperative,combined
+TempBlockSize=1048576
+TempCacheLimit=67108864
 
-[Communications]
+[Connection]
 ConnectionTimeout=180
 DummyPacketInterval=60
 RemoteServiceName=gds_db
@@ -30,16 +41,13 @@ RemoteAuxPort=0
 RemoteBindAddress=
 TcpRemoteBufferSize=8192
 TcpNoNagle=0;b
-Redirection=0;b
 Authentication=mixed;l;native,trusted,mixed
 
 [UNIX]
-LockSignal=16
+Redirection=0;b
 
 [Windows]
-DeadThreadsCollection=50
 GuardianOption=1;b
-IpcMapSize=4096
 IpcName=FIREBIRD;l;FIREBIRD,INTERBASE
 MaxUnflushedWrites=100
 MaxUnflushedWriteTime=5
@@ -50,7 +58,6 @@ RemotePipeName=interbas
 UsePriorityScheduler=1;b
 
 [Compatibility]
-CompleteBooleanEvaluation=0;b
-OldParameterOrdering=0;b
-LegacyHash=1;b
 OldColumnNaming=0;b
+OldSetClauseSemantics=0;b
+LegacyHash=1;b
