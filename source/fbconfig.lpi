@@ -43,14 +43,16 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="36">
+    <Units Count="37">
       <Unit0>
         <Filename Value="fbconfig.lpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="19"/>
-        <CursorPos X="9" Y="34"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="MainUnit.pas"/>
@@ -59,11 +61,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainUnit"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="246"/>
-        <CursorPos X="26" Y="261"/>
+        <TopLine Value="70"/>
+        <CursorPos X="5" Y="88"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -72,12 +73,15 @@
         <Filename Value="ConfigLists.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConfigLists"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
+        <CursorPos X="1" Y="19"/>
         <UsageCount Value="40"/>
         <Bookmarks Count="1">
           <Item0 X="3" Y="71" ID="1"/>
         </Bookmarks>
+        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="AliasProps.pas"/>
@@ -86,13 +90,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="AliasProps"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="73"/>
-        <CursorPos X="1" Y="103"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="DefaultProps.pas"/>
@@ -101,13 +104,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DefaultProps"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="43"/>
-        <CursorPos X="1" Y="72"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="PermissionProps.pas"/>
@@ -116,13 +118,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="PermissionProps"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="30"/>
-        <CursorPos X="11" Y="57"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="BooleanProps.pas"/>
@@ -131,13 +132,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="BooleanProps"/>
-        <EditorIndex Value="3"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="43"/>
-        <CursorPos X="1" Y="73"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="DirectoryProps.pas"/>
@@ -146,13 +147,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DirectoryProps"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="54"/>
-        <CursorPos X="1" Y="84"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="ListProps.pas"/>
@@ -161,13 +161,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ListProps"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="23"/>
-        <CursorPos X="1" Y="51"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="7"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="AboutForms.pas"/>
@@ -176,13 +175,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="AboutForms"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="42"/>
-        <CursorPos X="1" Y="72"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="C:\lazarus\lcl\controls.pp"/>
@@ -330,7 +328,7 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="876"/>
-        <CursorPos X="24" Y="889"/>
+        <CursorPos X="24" Y="884"/>
         <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit31>
@@ -364,128 +362,116 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit35>
+      <Unit36>
+        <Filename Value="w:\programs\lazarus\lcl\dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="10"/>
+      </Unit36>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="MainUnit.pas"/>
-        <Caret Line="406" Column="18" TopLine="393"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position1>
       <Position2>
         <Filename Value="MainUnit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="312" Column="20" TopLine="299"/>
       </Position2>
       <Position3>
         <Filename Value="MainUnit.pas"/>
-        <Caret Line="312" Column="20" TopLine="299"/>
+        <Caret Line="306" Column="26" TopLine="299"/>
       </Position3>
       <Position4>
         <Filename Value="MainUnit.pas"/>
-        <Caret Line="306" Column="26" TopLine="299"/>
+        <Caret Line="522" Column="1" TopLine="493"/>
       </Position4>
       <Position5>
-        <Filename Value="PermissionProps.pas"/>
-        <Caret Line="23" Column="36" TopLine="1"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position5>
       <Position6>
-        <Filename Value="PermissionProps.pas"/>
-        <Caret Line="125" Column="1" TopLine="96"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="98" Column="54" TopLine="89"/>
       </Position6>
       <Position7>
-        <Filename Value="PermissionProps.pas"/>
-        <Caret Line="61" Column="1" TopLine="61"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="314" Column="13" TopLine="300"/>
       </Position7>
       <Position8>
-        <Filename Value="PermissionProps.pas"/>
+        <Filename Value="MainUnit.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
       </Position8>
       <Position9>
-        <Filename Value="PermissionProps.pas"/>
-        <Caret Line="17" Column="46" TopLine="1"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="331" Column="12" TopLine="316"/>
       </Position9>
       <Position10>
-        <Filename Value="PermissionProps.pas"/>
-        <Caret Line="55" Column="1" TopLine="30"/>
+        <Filename Value="AliasProps.pas"/>
+        <Caret Line="55" Column="10" TopLine="37"/>
       </Position10>
       <Position11>
         <Filename Value="MainUnit.pas"/>
-        <Caret Line="522" Column="1" TopLine="493"/>
+        <Caret Line="331" Column="12" TopLine="316"/>
       </Position11>
       <Position12>
-        <Filename Value="MainUnit.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="AliasProps.pas"/>
+        <Caret Line="31" Column="6" TopLine="1"/>
       </Position12>
       <Position13>
-        <Filename Value="ListProps.pas"/>
-        <Caret Line="29" Column="12" TopLine="13"/>
+        <Filename Value="PermissionProps.pas"/>
+        <Caret Line="52" Column="45" TopLine="30"/>
       </Position13>
       <Position14>
-        <Filename Value="ListProps.pas"/>
-        <Caret Line="77" Column="1" TopLine="47"/>
+        <Filename Value="AboutForms.pas"/>
+        <Caret Line="50" Column="1" TopLine="37"/>
       </Position14>
       <Position15>
-        <Filename Value="ListProps.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="AliasProps.pas"/>
+        <Caret Line="3" Column="1" TopLine="1"/>
       </Position15>
       <Position16>
-        <Filename Value="DirectoryProps.pas"/>
-        <Caret Line="30" Column="22" TopLine="14"/>
+        <Filename Value="BooleanProps.pas"/>
+        <Caret Line="51" Column="1" TopLine="38"/>
       </Position16>
       <Position17>
-        <Filename Value="DirectoryProps.pas"/>
-        <Caret Line="52" Column="11" TopLine="25"/>
+        <Filename Value="ConfigLists.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position17>
       <Position18>
         <Filename Value="DefaultProps.pas"/>
-        <Caret Line="29" Column="12" TopLine="13"/>
+        <Caret Line="51" Column="1" TopLine="38"/>
       </Position18>
       <Position19>
-        <Filename Value="DefaultProps.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="DirectoryProps.pas"/>
+        <Caret Line="62" Column="1" TopLine="49"/>
       </Position19>
       <Position20>
-        <Filename Value="DefaultProps.pas"/>
-        <Caret Line="51" Column="1" TopLine="23"/>
+        <Filename Value="fbconfig.lpr"/>
+        <Caret Line="34" Column="9" TopLine="14"/>
       </Position20>
       <Position21>
-        <Filename Value="BooleanProps.pas"/>
-        <Caret Line="29" Column="12" TopLine="13"/>
+        <Filename Value="ListProps.pas"/>
+        <Caret Line="31" Column="1" TopLine="23"/>
       </Position21>
       <Position22>
-        <Filename Value="BooleanProps.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="ListProps.pas"/>
+        <Caret Line="7" Column="20" TopLine="1"/>
       </Position22>
       <Position23>
-        <Filename Value="BooleanProps.pas"/>
-        <Caret Line="51" Column="1" TopLine="23"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="274" Column="20" TopLine="267"/>
       </Position23>
       <Position24>
-        <Filename Value="AliasProps.pas"/>
-        <Caret Line="97" Column="25" TopLine="73"/>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="88" Column="5" TopLine="70"/>
       </Position24>
       <Position25>
-        <Filename Value="AliasProps.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="ConfigLists.pas"/>
+        <Caret Line="70" Column="3" TopLine="52"/>
       </Position25>
-      <Position26>
-        <Filename Value="AliasProps.pas"/>
-        <Caret Line="58" Column="1" TopLine="32"/>
-      </Position26>
-      <Position27>
-        <Filename Value="AboutForms.pas"/>
-        <Caret Line="51" Column="63" TopLine="37"/>
-      </Position27>
-      <Position28>
-        <Filename Value="AboutForms.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position28>
-      <Position29>
-        <Filename Value="AboutForms.pas"/>
-        <Caret Line="59" Column="1" TopLine="31"/>
-      </Position29>
-      <Position30>
-        <Filename Value="MainUnit.pas"/>
-        <Caret Line="98" Column="54" TopLine="89"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

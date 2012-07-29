@@ -1,5 +1,5 @@
 unit MainUnit;
-
+{$mode objfpc}{$H+}
 {***********************************************************************
 
   Copyright (C) 2004  Jihad Khalifa (jihad@parmaja.com)
@@ -22,7 +22,7 @@ unit MainUnit;
   MA  02111-1307  USA
 
 ************************************************************************}
-{todo: improve search}
+
 interface
 
 uses
@@ -246,27 +246,23 @@ end;
 procedure TMainForm.ReadComment(Section: String);
 var
   Idx, I: Integer;
-  S: string;
+  T, S: string;
 begin
-  CommentMemo.Lines.BeginUpdate;
-  try
-    CommentMemo.Lines.Clear;
-    Idx := CommentItems.IndexOf('['+ Section +']');
-    if Idx <> -1 then
+  T := '';
+  Idx := CommentItems.IndexOf('['+ Section +']');
+  if Idx <> -1 then
+  begin
+    for I := Idx + 1 to CommentItems.Count - 1 do
     begin
-      for I := Idx + 1 to CommentItems.Count - 1 do
-      begin
-        S := CommentItems[I];
-        if not ((S[1] = '[') and (S[Length(S)] = ']')) then
-          CommentMemo.Lines.Add(S)
-        else
-          Break;
-      end;
+      S := CommentItems[I];
+      if (S <> '') and ((S[1] = '[') and (S[Length(S)] = ']')) then
+        break
+      else
+        T := T + S + #13;
     end;
-    CommentMemo.SelStart := 0;
-  finally
-    CommentMemo.Lines.EndUpdate;
   end;
+  CommentMemo.Lines.Text := T;
+  CommentMemo.SelStart := 0;
 end;
 
 procedure TMainForm.SetDefaultValue1Click(Sender: TObject);

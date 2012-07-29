@@ -34,8 +34,8 @@ object MainForm: TMainForm
         Height = 4
         Top = 237
         Width = 547
-        Align = alTop
-        ResizeAnchor = akTop
+        Align = alBottom
+        ResizeAnchor = akBottom
         ResizeStyle = rsLine
       end
       object CommentMemo: TMemo
@@ -43,7 +43,7 @@ object MainForm: TMainForm
         Height = 99
         Top = 241
         Width = 547
-        Align = alClient
+        Align = alBottom
         Color = clInfoBk
         ReadOnly = True
         ScrollBars = ssVertical
@@ -111,7 +111,7 @@ object MainForm: TMainForm
         Height = 214
         Top = 23
         Width = 547
-        Align = alTop
+        Align = alClient
         Checkboxes = True
         Columns = <        
           item

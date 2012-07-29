@@ -506,11 +506,3 @@ Such gateway easily overrides firewall, installed to protect your LAN
 from outside attack.
 
 DO NOT ENABLE THIS OPTION UNLESS YOU REALLY KNOW WHAT YOU ARE DOING.
-
-
-[Authentication]
-Which authentication method(s) should be used.
-"native" means use of only traditional interbase/firebird authentication with security database.
-"trusted" (Windows Only) makes use of window trusted authentication, and in some aspects this is the most secure way to authenticate.
-"mixed" means both methods may be used.
-

@@ -1,5 +1,5 @@
 unit AliasProps;
-
+{$mode objfpc}{$H+}
 {***********************************************************************
 
   Copyright (C) 2004  Jihad Khalifa (jihad@parmaja.com)
