@@ -1,0 +1,280 @@
+object MainForm: TMainForm
+  Left = 278
+  Height = 400
+  Top = 171
+  Width = 558
+  HorzScrollBar.Page = 698
+  VertScrollBar.Page = 362
+  Caption = 'Firebird Configuration'
+  ClientHeight = 400
+  ClientWidth = 558
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poDefaultPosOnly
+  LCLVersion = '1.1'
+  object PageControl: TPageControl
+    Left = 3
+    Height = 366
+    Top = 2
+    Width = 555
+    ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = '&Configuration'
+      ClientHeight = 340
+      ClientWidth = 547
+      object Splitter1: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 4
+        Top = 237
+        Width = 547
+        Align = alTop
+        ResizeAnchor = akTop
+        ResizeStyle = rsLine
+      end
+      object CommentMemo: TMemo
+        Left = 0
+        Height = 99
+        Top = 241
+        Width = 547
+        Align = alClient
+        Color = clInfoBk
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 1
+      end
+      object Panel2: TPanel
+        Left = 0
+        Height = 23
+        Top = 0
+        Width = 547
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 23
+        ClientWidth = 547
+        TabOrder = 0
+        object SearchLbl: TLabel
+          Left = 5
+          Height = 14
+          Top = 4
+          Width = 35
+          Caption = '&Search'
+          FocusControl = SearchEdit
+          ParentColor = False
+        end
+        object Label1: TLabel
+          Left = 288
+          Height = 14
+          Top = 4
+          Width = 35
+          Caption = '&Groups'
+          ParentColor = False
+        end
+        object SearchEdit: TEdit
+          Left = 49
+          Height = 21
+          Top = 1
+          Width = 185
+          OnChange = SearchEditChange
+          OnKeyDown = SearchEditKeyDown
+          TabOrder = 0
+        end
+        object GroupCbo: TComboBox
+          Left = 332
+          Height = 21
+          Top = 1
+          Width = 188
+          ItemHeight = 13
+          OnChange = GroupCboChange
+          Style = csDropDownList
+          TabOrder = 1
+        end
+        object Button2: TButton
+          Left = 237
+          Height = 23
+          Top = 0
+          Width = 35
+          BorderSpacing.InnerBorder = 4
+          Caption = 'Go'
+          OnClick = Button2Click
+          TabOrder = 2
+        end
+      end
+      object ConfigList: TListView
+        Left = 0
+        Height = 214
+        Top = 23
+        Width = 547
+        Align = alTop
+        Checkboxes = True
+        Columns = <        
+          item
+            Caption = 'Property'
+            Width = 160
+          end        
+          item
+            Caption = 'Value'
+            Width = 250
+          end>
+        ColumnClick = False
+        HideSelection = False
+        PopupMenu = ConfPopupMenu
+        ReadOnly = True
+        RowSelect = True
+        TabOrder = 2
+        ViewStyle = vsReport
+        OnDblClick = ConfigListDblClick
+        OnKeyDown = ConfigListKeyDown
+        OnSelectItem = ConfigListSelectItem
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = '&Aliases'
+      ChildSizing.LeftRightSpacing = 2
+      ChildSizing.TopBottomSpacing = 2
+      ChildSizing.HorizontalSpacing = 2
+      ChildSizing.VerticalSpacing = 2
+      ClientHeight = 303
+      ClientWidth = 688
+      ImageIndex = 1
+      object AliasesList: TListView
+        Left = 2
+        Height = 299
+        Top = 2
+        Width = 596
+        Align = alClient
+        Columns = <        
+          item
+            Caption = 'Name'
+            Width = 100
+          end        
+          item
+            Caption = 'Path'
+            Width = 300
+          end>
+        ColumnClick = False
+        ReadOnly = True
+        RowSelect = True
+        TabOrder = 0
+        ViewStyle = vsReport
+        OnDblClick = AliasesListDblClick
+        OnKeyDown = AliasesListKeyDown
+      end
+      object Panel1: TPanel
+        Left = 600
+        Height = 299
+        Top = 2
+        Width = 86
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 299
+        ClientWidth = 86
+        TabOrder = 1
+        object RemoveBtn: TButton
+          Left = 6
+          Height = 25
+          Top = 67
+          Width = 75
+          Anchors = [akTop, akRight]
+          BorderSpacing.InnerBorder = 4
+          Caption = '&Delete'
+          OnClick = RemoveBtnClick
+          TabOrder = 0
+        end
+        object EditBtn: TButton
+          Left = 6
+          Height = 25
+          Top = 37
+          Width = 75
+          Anchors = [akTop, akRight]
+          BorderSpacing.InnerBorder = 4
+          Caption = '&Edit'
+          OnClick = EditBtnClick
+          TabOrder = 1
+        end
+        object AddBtn: TButton
+          Left = 6
+          Height = 25
+          Top = 8
+          Width = 75
+          Anchors = [akTop, akRight]
+          BorderSpacing.InnerBorder = 4
+          Caption = '&Add'
+          OnClick = AddBtnClick
+          TabOrder = 2
+        end
+      end
+    end
+  end
+  object SaveBtn: TButton
+    Left = 6
+    Height = 25
+    Top = 372
+    Width = 75
+    HelpType = htKeyword
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Caption = '&Ok'
+    OnClick = SaveBtnClick
+    TabOrder = 1
+  end
+  object RestoreBtn: TButton
+    Left = 376
+    Height = 25
+    Top = 372
+    Width = 111
+    Anchors = [akRight, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Caption = '&Restore Defaults'
+    TabOrder = 2
+    Visible = False
+  end
+  object ApplyBtn: TButton
+    Left = 86
+    Height = 25
+    Top = 372
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Caption = '&Apply'
+    OnClick = ApplyBtnClick
+    TabOrder = 3
+  end
+  object CancelBtn: TButton
+    Left = 165
+    Height = 25
+    Top = 372
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Cancel = True
+    Caption = '&Cancel'
+    OnClick = CancelBtnClick
+    TabOrder = 4
+  end
+  object Button1: TButton
+    Left = 489
+    Height = 25
+    Top = 372
+    Width = 63
+    Anchors = [akRight, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Caption = 'About'
+    OnClick = Button1Click
+    TabOrder = 5
+  end
+  object ConfPopupMenu: TPopupMenu
+    left = 107
+    top = 129
+    object SetDefaultValue1: TMenuItem
+      Caption = 'Set Default Value'
+      OnClick = SetDefaultValue1Click
+    end
+  end
+end

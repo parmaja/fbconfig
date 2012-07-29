@@ -1,0 +1,311 @@
+[RootDirectory]
+Specify the root directory under which Firebird is installed.
+Can be used to override the OS-specifically determined one.
+
+[DatabaseAccess]
+Database Paths/Directories
+
+DatabaseAccess may be None, Full or Restrict. If you choose Restrict,
+provide ';'-separated trees list, where database files are stored.
+Relative paths are treated relative to RootDirectory entry (see above).
+Default value 'Full' gives full access to all files on your site.
+To specify access to specific trees, enum all required paths (for Win32 this may be something like 'C:\DataBase;D:\Mirror', for unix - '/db;/mnt/mirrordb'). If you choose 'None', then only databases listed in aliases.conf can be attached.
+
+UNCONTROLLED DATABASE ACCESS MAY COMPROMISE YOUR SYSTEM!
+IT IS STRONGLY RECOMMENDED THAT THIS SETTING BE USED TO LIMIT DATABASE LOCATIONS!
+
+[ExternalFileAccess]
+External File Paths/Directories
+
+ExternalFileAccess may be None, Full or Restrict. If you choose Restrict, provide ';'-separated trees list, where external files are stored. Relative paths are treated relative to RootDirectory entry (see above).
+Default value 'None' disables any use of external files on your site.
+To specify access to specific trees, enum all required paths (for Win32 this may be something like 'C:\ExternalTables', for unix - '/db/extern;/mnt/extern').
+
+NOTE: THE EXTERNAL TABLE ENGINE FEATURE COULD BE USED TO COMPROMISE THE SERVER/HOST AS WELL AS DATABASE SECURITY!!
+
+IT IS STRONGLY RECOMMENDED THAT THIS SETTING BE USED TO LIMIT EXTERNAL TABLE LOCATIONS!
+
+[UdfAccess]
+External Function (UDF) Paths/Directories
+
+UdfAccess may be None, Full or Restrict. If you choose Restrict, provide ';'-separated trees list, where UDF libraries are stored.
+Relative paths are treated relative to RootDirectory entry (see above).
+Default value 'Restrict UDF' provides the same restrictions as in FB 1.0.
+To specify access to specific trees, enum all required paths (for Win32 this may be something like 'C:\ExternalFunctions', for unix - '/db/extern;/mnt/extern').
+
+NOTE: THE EXTERNAL FUNCTION ENGINE FEATURE COULD BE USED TO COMPROMISE THE SERVER/HOST AS WELL AS DATABASE SECURITY!!
+
+IT IS STRONGLY RECOMMENDED THAT THIS SETTING BE USED TO LIMIT EXTERNAL FUNCTION LOCATIONS!
+
+[TempDirectories]
+Temporary directories
+
+Provide ';'-separated trees list, where temporary files are stored.
+Relative paths are treated relative to RootDirectory entry (see above).
+Default value is determined using FIREBIRD_TMP, TEMP or TMP environment options.
+Every directory item may have optional size argument to limit its storage, this argument follows the directory name and must be separated by at least one space character.
+If the size argument is omitted or invalid, then all available space in this directory will be used.
+
+E.g.:
+TempDirectories = c:\temp
+or
+TempDirectories = c:\temp;d:\temp
+or
+TempDirectories = c:\temp 100000000;d:\temp 500000000;e:\temp
+
+[LegacyHash]
+Legacy hash makes possible use of old security.fdb after running misc/upgrade/security_database.sql.
+If you want to disable logons with old passwords after users' migration, set it to 0 (false).
+Makes no difference when used with original security2.fdb - it can't contain DES hash.
+
+[DefaultDbCachePages]
+Number of cached database pages
+
+This sets the number of pages from any one database that can be held in cache at once.
+If you increase this value, the engine will allocate more pages to the cache for every database.
+By default, the SuperServer allocates 2048 pages for each database and the classic allocates 75 pages per client connection per database.
+
+[SortMemBlockSize]
+In-memory sorting module
+
+The amount of memory allocated for each sort block.
+
+[SortMemUpperLimit]
+The maximum amount of memory to be allocated by the in-memory sorting module.
+
+For Classic servers, this setting is defaulted to 8 MB.
+Although it can be increased, the value applies to each client connection/server instance and thus consumes a lot of memory.
+
+[OldParameterOrdering]
+Backward-compatible parameter ordering as it was in FB v1/IB
+
+[CompleteBooleanEvaluation]
+Boolean evaluation method (complete or shortcut)
+
+If your SQL code depends on side-effects of full evaluation of OR and AND statements (right-hand-side terms), even if the expressions final result could be determined by just examining the value of the first term, you might need to turn this on.
+
+[DeadlockTimeout]
+Determines the number of seconds that the lock manager will wait after a conflict has been encountered before purging locks from dead processes and doing extra deadlock scan cycle.
+Engine detects deadlocks instantly in all normal cases, so this value affects things only if something goes wrong.
+Setting it too low may degrade system performance.
+
+[MaxUnflushedWrites]
+How often the pages are flushed on disk (for databases with ForcedWrites=Off only)
+
+Number of unflushed writes which will accumulate before they are flushed, at the next transaction commit.
+For non-Win32 ports, the default value is -1 (Disabled)
+
+[MaxUnflushedWriteTime]
+Number of seconds during which unflushed writes will accumulate before they are flushed, at the next transaction commit.
+For non-Win32 ports, the default value is -1 (Disabled)
+
+[BugcheckAbort]
+This option controls whether to call abort() when internal error or BUGCHECK is encountered thus invoke post-mortem debugger which can dump core suitable for off-line analysis. When disabled engine tries to minimize damage and continue execution.
+
+Note that setting this option to 1 makes engine produce traceable coredumps when something nasty like SIGSEGV happens inside UDF. On Windows enabling this option makes engine invoke JIT debugger facilities when errors happen.
+
+For debugging builds (DEV_BUILD), default value is 1 (Enabled)
+
+[OldColumnNaming]
+Prior to Firebird 1.5 various SELECT expressions generated unnamed columns. This did not conform to the SQL standard. Fb 1.5 saw the introduction of default aliases for these unnamed columns.
+In some cases, particularly if string concatenation is used (via the || operator) this breaks existing scripts.
+
+This setting will affect aliases generated via CONCATENATION, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP and EXTRACT.
+Setting the value to true will disable the alias generation. It is only recommended to be used where legacy scripts need to be supported.
+It will be marked deprecated in Firebird 2.0 and removed in Firebird 3.0.
+
+[ConnectionTimeout]
+Client Connection Settings (Basic)
+
+Seconds to wait before concluding an attempt to connect has failed.
+
+[DummyPacketInterval]
+Seconds to wait on a silent client connection before the server sends dummy packets to request acknowledgment.
+
+DO NOT USE THIS OPTION. It may hang or crash Windows on the client side as explained here: http://support.microsoft.com/default.aspx?kbid=296265
+or may not prevent eventual inactive client disconnection for other OS.
+
+Normally, Firebird uses SO_KEEPALIVE socket option to keep track of active connections.
+If you do not like default 2-hour keepalive timeout then adjust your server OS settings appropriately.
+On UNIX-like OS's, modify contents of /proc/sys/net/ipv4/tcp_keepalive_*.
+On Windows, follow instrutions of this article: http://support.microsoft.com/default.aspx?kbid=140325
+
+[RemoteServiceName]
+TCP Protocol Settings
+
+The TCP Service name/Port number to be used for client database connections.
+
+It is only necessary to change one of the entries, not both.
+The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+
+[RemoteServicePort]
+TCP Protocol Settings
+
+The TCP Service name/Port number to be used for client database connections.
+
+It is only necessary to change one of the entries, not both.
+The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+
+[RemoteAuxPort]
+The TCP Port Number to be used for server Event Notification messages.  The value of 0 (Zero) means that the server will choose a port number randomly.
+
+[TcpRemoteBufferSize]
+TCP/IP buffer size for send and receive buffers of both the client and server.
+The engine reads ahead of the client and can send several rows of data in a single packet. The larger the packet size, the more data is sent per transfer. Range is 1448 to 32767 (MAX_SSHORT).
+
+[TcpNoNagle]
+Either enables or disables Nagle algorithm (TCP_NODELAY option of socket) of the socket connection.
+
+Note: Currently is a default for classic and super servers.
+
+[RemoteBindAddress]
+Allows incoming connections to be bound to the IP address of a specific network card.
+It enables rejection of incoming connections through any other network interface except this one.
+By default, connections from any available network interface are allowed.
+
+[LockMemSize]
+Locking and shared memory parameters
+
+Bytes of shared memory allocated for lock manager.
+In Classic mode, the size given is used for the initial allocation.
+The table expands dynamically up to the limit of memory.
+In SuperServer, the initial size is also the final size.
+Default is 96K on Linux and Solaris, 256K on Windows.
+
+[LockSemCount]
+Number of semaphores for interprocess communication.
+In non-threading environments, this sets the number of semaphores available
+
+[LockGrantOrder]
+When a connection wants to lock an object, it gets a lock request block which specifies the object and the lock level requested.
+Each locked object has a lock block.
+Request blocks are connected to those lock blocks either as requests that have been granted, or as pending requests.
+
+The settings:
+	1 means locks are granted first come, first served.
+	0 means emulate InterBase v3.3 behavior, where locks are granted
+  as soon as they are available; can result in lock request starvation.
+
+[LockAcquireSpins]
+In Classic, only one client process may access the lock table at any time.
+Access to the lock table is governed by a mutex.
+The mutex can be requested conditionally - a wait is a failure and the request must be retried - or unconditionally - the request will wait until it is satisfied.
+This parameter establishes the number of attempts that will be made conditionally. Zero value means unconditional mode.
+Relevant only on SMP machines.
+
+[LockHashSlots]
+Tune lock hash list; more hash slots mean shorter hash chains.
+Only necessary under very high load. Prime number values are recommended.
+
+[EventMemSize]
+Bytes of shared memory allocated for event manager.
+
+[CpuAffinityMask]
+Which CPUs should be used (Windows Only)
+
+In an SMP system, sets which processors can be used by the server.
+The value is taken from a bit map in which each bit represents a CPU.
+Thus, to use only the first processor, the value is 1.
+To use both CPU 1 and CPU 2, the value is 3. To use CPU 2 and CPU 3, the value is 6. The default value is 1.
+
+[UsePriorityScheduler]
+Settings for the thread scheduler	 (Windows Only)
+
+If you have problems with computer response time, running firebird on workstation, turn off thread scheduler.
+
+[PrioritySwitchDelay]
+The wait time, in milli-seconds (ms), before the priority of:
+ - an active thread is reduced to 'Low', or
+ - an inactive thread is increased to 'High'
+
+Note: The default value was chosen based on experiments on Intel PIII/P4 processors.
+It should be increased for using in the computer with lower speed processors.
+
+[PriorityBoost]
+Number of additional 'intervals' given to a 'High' priority thread.
+
+[GCPolicy]
+Garbage collection policy
+
+Defines how engine does garbage collection. Valid values are :
+  cooperative
+  background
+  combined
+
+Superserver has by default "combined" policy Classic has by default "cooperative" policy.
+Other values are ignored by classic server build
+
+[GuardianOption]
+Does the guardian restart the server every time it crashes?
+  0 - only start the engine/service once
+  1 - always restart the engine/service if it terminates
+
+[ProcessPriorityLevel]
+Priority level/class for the server process.
+
+The values are:
+     0 (Zero) - normal priority,
+     positive value - high priority (same as -B command line option)
+     negative value - low priority.
+
+Note: All changes to this value should be carefully tested to ensure that engine is more responsive to requests.
+
+[IpcName]
+Local Connection Settings
+
+The name of the shared memory area used as a transport channel in local protocol.
+Note that the local protocol in v2.0 is not compatible with any previous version if Firebird or InterBase.
+
+IMPORTANT! If your host OS is Windows 2003 or Windows XP with the terminal services enabled and you need the local connection to work, you should prefix
+the below value with "Global\", i.e. it should be "Global\FIREBIRD".
+Please note that the prefix is case-sensitive.
+
+[RemotePipeName]
+The name of the pipe used as a transport channel in NetBEUI protocol.
+Has the same meaning as a port number for TCP/IP. The default value is compatible with IB/FB1.
+
+[LockSignal]
+UNIX signal to use for interprocess communication
+
+[RemoteFileOpenAbility]
+Remove protection against opening databases on NFS mounted volumes
+
+    ***WARNING*** ***WARNING*** ***WARNING*** ***WARNING***
+
+This option removes an important safety feature of Firebird and can cause irrecoverable database corruption.
+Do not use this option unless you understand the risks and are prepared to accept the loss of the contents of your database.
+Unless this configuration option is changed from 0 to 1, Firebird can open a database only if the database is stored on a drive physically attached to the local computer - the computer running that copy of Firebird.
+Requests for connections to databases stored on NFS mounted drives are redirected to a Firebird server running on the computer that "owns" the disk.
+This restriction prevents two different copies of Firebird from opening the same database without coordinating their activities.
+Uncoordinated access by multiple copies of Firebird will corrupt a database.
+On a localsystem, the system-level file locking prevents uncoordinated access to the database file.
+NFS does not provide a reliable way to detect multiple users of a file on an NFS mounted disk.
+If a second copy of Firebird connects to a database on an NFS mounted disk, it will corrupt the database.
+Under some circumstances, running a Firebird server on the computer that owns NFS mounted volumes is inconvenient or impossible.
+Applications that use the "embedded" variant of Firebird and never share access to a database can use this option to permit direct access to databases on NFS mounted volumes.
+
+DO NOT ENABLE THIS OPTION UNLESS YOU REALLY KNOW WHAT YOU ARE DOING.
+
+[Redirection]
+Remove protection against redirecting requests to other servers
+
+    ***WARNING*** ***WARNING*** ***WARNING*** ***WARNING***
+
+Ability to redirect requests to other servers was initially present in Interbase, but was broken by Borland in Interbase 6.0, when they added SQL dialects.
+Request redirection was fixed in firebird 2.0, but today such behaviour (proxy) seems to be dangerous from security point of view.
+Imagine, you have one carefully protected firebird server, access to which is possible from global net.
+But in case when this server has access to your internal LAN (may and should be restricted, but often possible), it will work as a gateway for incoming requests like: firebird.your.domain.com:internal_server:/private/database.fdb It's enough to know name/IP of some internal server on your LAN, and for this connection one even need not know login/password on external server.
+Such gateway easily overrides firewall, installed to protect your LAN from outside attack.
+
+DO NOT ENABLE THIS OPTION UNLESS YOU REALLY KNOW WHAT YOU ARE DOING.
+
+[DeadThreadsCollection]
+
+[IpcMapSize]
+
+[Authentication]
+Which authentication method(s) should be used.
+"native" means use of only traditional interbase/firebird authentication with security database.
+"trusted" (Windows Only) makes use of window trusted authentication, and in some aspects this is the most secure way to authenticate.
+"mixed" means both methods may be used.
+

@@ -1,0 +1,89 @@
+object AliasPropForm: TAliasPropForm
+  Left = 242
+  Height = 91
+  Top = 276
+  Width = 436
+  HorzScrollBar.Page = 435
+  VertScrollBar.Page = 90
+  ActiveControl = NameEdit
+  BorderStyle = bsToolWindow
+  Caption = 'Alias Properties'
+  ClientHeight = 91
+  ClientWidth = 436
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.1'
+  object Label1: TLabel
+    Left = 4
+    Height = 14
+    Top = 13
+    Width = 52
+    Caption = 'Alias name'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 4
+    Height = 14
+    Top = 39
+    Width = 46
+    Caption = 'File name'
+    ParentColor = False
+  end
+  object NameEdit: TEdit
+    Left = 69
+    Height = 21
+    Top = 10
+    Width = 166
+    TabOrder = 0
+  end
+  object PathEdit: TEdit
+    Left = 69
+    Height = 21
+    Top = 35
+    Width = 342
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 1
+  end
+  object OkBtn: TButton
+    Left = 3
+    Height = 25
+    Top = 63
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Caption = 'Ok'
+    Default = True
+    OnClick = OkBtnClick
+    TabOrder = 3
+  end
+  object CancelBtn: TButton
+    Left = 83
+    Height = 25
+    Top = 63
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.InnerBorder = 4
+    Cancel = True
+    Caption = 'Cancel'
+    OnClick = CancelBtnClick
+    TabOrder = 4
+  end
+  object BrowseBtn: TButton
+    Left = 413
+    Height = 21
+    Top = 35
+    Width = 21
+    Anchors = [akTop, akRight]
+    BorderSpacing.InnerBorder = 4
+    Caption = '...'
+    OnClick = BrowseBtnClick
+    TabOrder = 2
+  end
+  object OpenDialog: TOpenDialog
+    FilterIndex = 0
+    left = 68
+    top = 64
+  end
+end

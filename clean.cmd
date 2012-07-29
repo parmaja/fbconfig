@@ -1,0 +1,1 @@
+erase /f /s /q *.or *.~* *.ddp *.map *.o *.ppu
