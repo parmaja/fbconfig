@@ -41,7 +41,6 @@ RemoteAuxPort=0
 RemoteBindAddress=
 TcpRemoteBufferSize=8192
 TcpNoNagle=0;b
-Authentication=mixed;l;native,trusted,mixed
 
 [UNIX]
 Redirection=0;b

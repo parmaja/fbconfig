@@ -169,28 +169,37 @@ begin
   ConfigFile := TStringList.Create;
   CommentItems := TStringList.Create;
   AliaseItems := TStringList.Create;
+  aFileDir := '';
   {$IFDEF WINDOWS}
   aReg := TRegistry.Create;
-  aReg.RootKey := HKEY_LOCAL_MACHINE;
-  aReg.Access:=KEY_READ;
-  if aReg.OpenKey('SOFTWARE\Firebird Project\Firebird Server\Instances', False) then
-    aFileDir := aReg.ReadString('DefaultInstance');
-  aReg.CloseKey;
-  aReg.Free;
+  try
+    aReg.RootKey := HKEY_LOCAL_MACHINE;
+    aReg.Access:=KEY_READ;
+    if aReg.OpenKey('SOFTWARE\Firebird Project\Firebird Server\Instances', False) then
+      aFileDir := aReg.ReadString('DefaultInstance');
+    aReg.CloseKey;
+  finally
+    aReg.Free;
+  end;
   {$ELSE}
   aFileDir := '/opt/firebird/';
   {$ENDIF}
-  cnfFileName := aFileDir + 'firebird.conf';
-  alsFileName := aFileDir + 'aliases.conf';
-  ReadConfig;
-  ReadAliases;
-  FillGroupCombo(ConfigDefaults.Groups);
-  {$IFDEF WINDOWS}
-  aFileName := ExpandFileName(IncludeTrailingPathDelimiter(ExtractFileDir(Application.ExeName)) + 'comments.txt');
-  {$ELSE}
-  aFileName := ExpandFileName(IncludeTrailingPathDelimiter(ExtractFileDir(Application.ExeName)) + 'comments.txt');
-  {$ENDIF}
-  CommentItems.LoadFromFile(aFileName);
+  if not DirectoryExists(aFileDir) then
+    SelectDirectory('Select Firebird SQL Directory', '', aFileDir, False);
+
+  if not DirectoryExists(aFileDir) then
+      aFileDir := '';
+
+  if aFileDir <> '' then
+  begin
+    cnfFileName := aFileDir + 'firebird.conf';
+    alsFileName := aFileDir + 'aliases.conf';
+    ReadConfig;
+    ReadAliases;
+    FillGroupCombo(ConfigDefaults.Groups);
+    aFileName := ExpandFileName(IncludeTrailingPathDelimiter(ExtractFileDir(Application.ExeName)) + 'comments.txt');
+    CommentItems.LoadFromFile(aFileName);
+  end;
   PageControl.TabIndex := 0;
 end;
 
