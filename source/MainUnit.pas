@@ -190,8 +190,8 @@ begin
 
   if aFileDir <> '' then
   begin
-    cnfFileName := aFileDir + 'firebird.conf';
-    alsFileName := aFileDir + 'aliases.conf';
+    cnfFileName := IncludeTrailingPathDelimiter(aFileDir) + 'firebird.conf';
+    alsFileName := IncludeTrailingPathDelimiter(aFileDir) + 'aliases.conf';
     ReadConfig;
     ReadAliases;
     FillGroupCombo(ConfigDefaults.Groups);
@@ -524,4 +524,4 @@ begin
 end;
 
 end.
-
+
