@@ -121,11 +121,7 @@ var
   aFileName: string;
 begin
   ConfigFile.LoadFromFile(cnfFileName);
-  {$IFDEF WINDOWS}
   aFileName := ExpandFileName(IncludeTrailingPathDelimiter(ExtractFileDir(Application.ExeName)) + 'defaults.txt');
-  {$ELSE}
-  aFileName := ExpandFileName(IncludeTrailingPathDelimiter(ExtractFileDir(Application.ExeName)) + 'defaults.txt');
-  {$ENDIF}
   ConfigDefaults.LoadFromFile(aFileName);
   ConfigDefaults.UpdateValues(ConfigFile);
   FillConfigList;
@@ -182,7 +178,9 @@ begin
     aReg.Free;
   end;
   {$ELSE}
-  aFileDir := '/opt/firebird/';
+  aFileDir := '/etc/firebird/';
+  if not DirectoryExists(aFileDir) then
+    aFileDir := '/opt/firebird/';
   {$ENDIF}
   if not DirectoryExists(aFileDir) then
     SelectDirectory('Select Firebird SQL Directory', '', aFileDir, False);
@@ -526,4 +524,4 @@ begin
 end;
 
 end.
-
+

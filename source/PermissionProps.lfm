@@ -18,7 +18,7 @@ object PermissionPropForm: TPermissionPropForm
     Left = 7
     Height = 14
     Top = 10
-    Width = 65
+    Width = 75
     Caption = 'Default Value'
     ParentColor = False
   end
@@ -26,7 +26,7 @@ object PermissionPropForm: TPermissionPropForm
     Left = 9
     Height = 14
     Top = 35
-    Width = 28
+    Width = 31
     Caption = 'Value'
     ParentColor = False
   end
@@ -34,13 +34,13 @@ object PermissionPropForm: TPermissionPropForm
     Left = 8
     Height = 14
     Top = 58
-    Width = 54
+    Width = 68
     Caption = 'Parameters'
     ParentColor = False
   end
   object DefValueEdit: TEdit
     Left = 83
-    Height = 21
+    Height = 23
     Top = 7
     Width = 235
     Color = clBtnFace
@@ -48,10 +48,10 @@ object PermissionPropForm: TPermissionPropForm
   end
   object ValueEdit: TComboBox
     Left = 83
-    Height = 21
+    Height = 35
     Top = 31
     Width = 235
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'None'
       'Full'
@@ -95,9 +95,9 @@ object PermissionPropForm: TPermissionPropForm
   end
   object ParametersEdit: TEdit
     Left = 83
-    Height = 21
+    Height = 23
     Top = 54
     Width = 235
     TabOrder = 1
   end
-end
+end

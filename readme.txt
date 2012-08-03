@@ -1,9 +1,8 @@
-fbConfig 1.0.0
+fbConfig 2 for FirebirdSQL 2.5
 
-Firebird SQL 2.5 Config tool
-It is a simple tools for edit "firebid.conf" and "aliases.conf" as easy without define the path (taked from registry),
+It is a simple tools for edit "firebid.conf" and "aliases.conf"
 Easy Hash Unhash line (comment it),
-Recognize hashed value for Unhasing it,
+Recognize hashed value for Unhasing it later,
 Description for every values.
 
 www.parmaja.com
