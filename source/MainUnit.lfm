@@ -102,14 +102,14 @@ object MainForm: TMainForm
           Style = csDropDownList
           TabOrder = 1
         end
-        object Button2: TButton
+        object SearchBtn: TButton
           Left = 237
           Height = 23
           Top = 0
           Width = 35
           BorderSpacing.InnerBorder = 4
           Caption = 'Go'
-          OnClick = Button2Click
+          OnClick = SearchBtnClick
           TabOrder = 2
         end
       end
@@ -122,12 +122,16 @@ object MainForm: TMainForm
         Checkboxes = True
         Columns = <        
           item
-            Caption = 'Property'
-            Width = 160
+            Caption = 'Property Name'
+            Width = 200
+          end        
+          item
+            Caption = 'Status'
+            Width = 80
           end        
           item
             Caption = 'Value'
-            Width = 369
+            Width = 260
           end>
         ColumnClick = False
         HideSelection = False
@@ -147,18 +151,18 @@ object MainForm: TMainForm
       ChildSizing.TopBottomSpacing = 2
       ChildSizing.HorizontalSpacing = 2
       ChildSizing.VerticalSpacing = 2
-      ClientHeight = 335
-      ClientWidth = 549
+      ClientHeight = 340
+      ClientWidth = 547
       ImageIndex = 1
       object AliasesList: TListView
         Left = 2
-        Height = 299
+        Height = 336
         Top = 2
-        Width = 596
+        Width = 455
         Align = alClient
         Columns = <        
           item
-            Caption = 'Name'
+            Caption = 'Alias Name'
             Width = 100
           end        
           item
@@ -174,13 +178,13 @@ object MainForm: TMainForm
         OnKeyDown = AliasesListKeyDown
       end
       object Panel1: TPanel
-        Left = 600
-        Height = 299
+        Left = 459
+        Height = 336
         Top = 2
         Width = 86
         Align = alRight
         BevelOuter = bvNone
-        ClientHeight = 299
+        ClientHeight = 336
         ClientWidth = 86
         TabOrder = 1
         object RemoveBtn: TButton
@@ -239,6 +243,7 @@ object MainForm: TMainForm
     Anchors = [akRight, akBottom]
     BorderSpacing.InnerBorder = 4
     Caption = '&Restore Defaults'
+    OnClick = RestoreBtnClick
     TabOrder = 2
     Visible = False
   end
@@ -265,7 +270,7 @@ object MainForm: TMainForm
     OnClick = CancelBtnClick
     TabOrder = 4
   end
-  object Button1: TButton
+  object AboutBtn: TButton
     Left = 489
     Height = 25
     Top = 372
@@ -273,7 +278,7 @@ object MainForm: TMainForm
     Anchors = [akRight, akBottom]
     BorderSpacing.InnerBorder = 4
     Caption = 'About'
-    OnClick = Button1Click
+    OnClick = AboutBtnClick
     TabOrder = 5
   end
   object ConfPopupMenu: TPopupMenu

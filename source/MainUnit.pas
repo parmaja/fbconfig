@@ -37,8 +37,8 @@ type
   TMainForm = class(TForm)
     AddBtn: TButton;
     ApplyBtn: TButton;
-    Button1: TButton;
-    Button2: TButton;
+    AboutBtn: TButton;
+    SearchBtn: TButton;
     CancelBtn: TButton;
     EditBtn: TButton;
     PageControl: TPageControl;
@@ -60,7 +60,8 @@ type
     SearchEdit: TEdit;
     GroupCbo: TComboBox;
     ConfigList: TListView;
-    procedure Button2Click(Sender: TObject);
+    procedure RestoreBtnClick(Sender: TObject);
+    procedure SearchBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SaveBtnClick(Sender: TObject);
@@ -82,7 +83,7 @@ type
     procedure ConfigListDblClick(Sender: TObject);
     procedure ConfigListKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Button1Click(Sender: TObject);
+    procedure AboutBtnClick(Sender: TObject);
   private
     ConfigDefaults: TConfigList;
     AliaseItems: TStringList;
@@ -100,6 +101,7 @@ type
     procedure ReadAliases;
     procedure SaveAliases;
     procedure ReadComment(Section: String);
+    procedure UpdateListItem(vItem: TListItem; vConfigItem: TConfigItem);
     procedure FillConfigList(vGroup: Integer = 0);
     procedure FillGroupCombo(Items: TStringList);
   end;
@@ -149,9 +151,14 @@ begin
   CommentItems.Free;
 end;
 
-procedure TMainForm.Button2Click(Sender: TObject);
+procedure TMainForm.SearchBtnClick(Sender: TObject);
 begin
   FindIt;
+end;
+
+procedure TMainForm.RestoreBtnClick(Sender: TObject);
+begin
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -272,32 +279,46 @@ begin
   CommentMemo.SelStart := 0;
 end;
 
-procedure TMainForm.SetDefaultValue1Click(Sender: TObject);
+procedure TMainForm.UpdateListItem(vItem: TListItem; vConfigItem: TConfigItem);
 begin
-  IsChanged := True;
+  vItem.SubItems.Clear;
+  if (vConfigItem.Value = vConfigItem.DefValue) then
+    vItem.SubItems.Add('Default')
+  else
+    vItem.SubItems.Add('User set');
+  vItem.SubItems.Add(vConfigItem.Value);
+  vItem.Checked := not vConfigItem.IsHashed;
+end;
+
+procedure TMainForm.SetDefaultValue1Click(Sender: TObject);
+var
+  Idx: Integer;
+begin
+  if ConfigList.Selected <> nil then
+  begin
+    Idx := Integer(ConfigList.Selected.Data);
+    ConfigDefaults[Idx].Value := ConfigDefaults[Idx].DefValue;
+    UpdateListItem(ConfigList.Selected, ConfigDefaults[Idx]);
+    IsChanged := True;
+  end;
 end;
 
 procedure TMainForm.ReadAliases;
 var
-  Line, S: string;
+  Line: string;
   I: Cardinal;
   aItem: TListItem;
 begin
   AliaseItems.LoadFromFile(alsFileName);
   for I := 0 to AliaseItems.Count - 1 do
   begin
-    Line := AliaseItems[I];
-    Trim(Line);
+    Line := Trim(AliaseItems[I]);
     if (Line <> '') and (Line[1] <> '#') then
     begin
       aItem := AliasesList.Items.Add;
-      S := GetPartStr(Line, '=', 0);
-      Trim(S);
-      aItem.Caption := S;
       aItem.Data := Pointer(I);
-      S := GetPartStr(Line, '=', 1);
-      Trim(S);
-      aItem.SubItems.Add(S);
+      aItem.Caption := Trim(GetPartStr(Line, '=', 0));
+      aItem.SubItems.Add(Trim(GetPartStr(Line, '=', 1)));
     end;
   end;
 end;
@@ -435,9 +456,8 @@ begin
       begin
         aItem := Items.Add;
         aItem.Data := Pointer(I);
-        aItem.Checked := not ConfigDefaults[I].IsHashed;
         aItem.Caption := ConfigDefaults[I].Ident;
-        aItem.SubItems.Add(ConfigDefaults[I].Value);
+        UpdateListItem(aItem, ConfigDefaults[I]);
       end;
     end;
     EndUpdate;
@@ -477,8 +497,7 @@ begin
     if aChanged then
     begin
       ConfigDefaults[Idx].Value := aItem.Value;
-      ConfigList.Selected.SubItems[0] := aItem.Value;
-      ConfigList.Selected.Checked := not aItem.IsHashed;
+      UpdateListItem(ConfigList.Selected, ConfigDefaults[Idx]);
       IsChanged := True;
     end;
   end;
@@ -492,7 +511,7 @@ begin
   end;
 end;
 
-procedure TMainForm.Button1Click(Sender: TObject);
+procedure TMainForm.AboutBtnClick(Sender: TObject);
 begin
   with TAboutForm.Create(Application) do
   begin
